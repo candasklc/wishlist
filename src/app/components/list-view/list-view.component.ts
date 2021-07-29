@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataProviderService } from 'src/app/services/data-provider.service';
-import { DashiData } from 'src/app/interfaces/dashi-data';
+import { Data } from 'src/app/interfaces/data';
 import { Observable } from 'rxjs';
 
 
@@ -10,8 +10,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent implements OnInit {
-  wishListOfDashi: DashiData[];
-  wishListOfDjuli = ['first', 'second', 'third'];
+  dashiUrl = '../../assets/dashiWishlist.json';
+  djuliUrl = '../../assets/djuliWishlist.json';
+
+  wishListOfDashi: Data[];
+  wishListOfDjuli: Data[];
 
   dashiInput = '';
   djuliInput = '';
@@ -19,21 +22,29 @@ export class ListViewComponent implements OnInit {
   constructor(private dataProvider: DataProviderService) { }
 
   ngOnInit(): void {
-    this.getLists();
+    this.getDashiLists(this.dashiUrl);
+    this.getDjuliLists(this.djuliUrl);
   }
 
   submitDashi(): void{
-    this.getLists();
+    this.getDashiLists(this.dashiUrl);
   }
 
   submitDjuli(): void{
-    console.log('Djuli clicked');
+    this.getDjuliLists(this.djuliUrl);
   }
 
-  getLists(): void{
-    this.dataProvider.getList()
-    .subscribe((data: DashiData[]) => {
+  getDashiLists(url: string): void{
+    this.dataProvider.getList(url)
+    .subscribe((data: Data[]) => {
       this.wishListOfDashi = data;
+    });
+  }
+
+  getDjuliLists(url: string): void{
+    this.dataProvider.getList(url)
+    .subscribe((data: Data[]) => {
+      this.wishListOfDjuli = data;
     });
   }
 

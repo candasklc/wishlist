@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DashiData } from './../interfaces/dashi-data';
+import { Data } from '../interfaces/data';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -8,11 +8,11 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataProviderService {
-  getUrl = '../../assets/dashiWishlist.json';
+  dashiUrl = '../../assets/dashiWishlist.json';
 
   constructor(private http: HttpClient) { }
 
-  getList(): Observable<DashiData[]> {
-    return this.http.get<DashiData[]>(this.getUrl);
+  getList(url): Observable<Data[]> {
+    return this.http.get<Data[]>(url);
   }
 }

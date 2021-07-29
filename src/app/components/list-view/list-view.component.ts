@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataProviderService } from 'src/app/services/data-provider.service';
+import { DashiData } from 'src/app/interfaces/dashi-data';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -7,22 +10,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent implements OnInit {
-  wishListOfDashi = ['first','second','third']
-  wishListOfDjuli = ['first','second','third']
-  
-  dashiInput = ''
-  djuliInput = ''
+  wishListOfDashi: DashiData[];
+  wishListOfDjuli = ['first', 'second', 'third'];
 
-  constructor() { }
+  dashiInput = '';
+  djuliInput = '';
+
+  constructor(private dataProvider: DataProviderService) { }
 
   ngOnInit(): void {
+    this.getLists();
   }
 
-  submitDashi(){
-    this.wishListOfDashi.push(this.dashiInput)
+  submitDashi(): void{
+    this.getLists();
   }
 
-  submitDjuli(){
+  submitDjuli(): void{
     console.log('Djuli clicked');
   }
+
+  getLists(): void{
+    this.dataProvider.getList()
+    .subscribe((data: DashiData[]) => {
+      this.wishListOfDashi = data;
+    });
+  }
+
 }

@@ -1,12 +1,20 @@
 <div class="container">
-    <article class="list-container-one">
-        <ul class="list-one">
-            <li></li>
+    <article class="list-containers list-container-one">
+        <mat-form-field appearance="fill">
+            <mat-label>Add...</mat-label>
+            <input id="input-one" matInput>
+        </mat-form-field>
+        <ul class="lists" *ngFor="let x of wishListOfDashi">
+            <li>{{x}}</li>
         </ul>
     </article>
-    <article class="list-container-two">
-        <ul class="list-two">
-            <li></li>
+    <article class="list-containers list-container-two">
+        <mat-form-field appearance="fill">
+            <mat-label>Add...</mat-label>
+            <input id="input-two" matInput>
+        </mat-form-field>
+        <ul class="lists" *ngFor="let x of wishListOfDjuli">
+            <li>{{x}}</li>
         </ul>
     </article>
 </div>

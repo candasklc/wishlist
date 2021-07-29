@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap');
+
+*{ 
+    margin: 0; 
+    font-family: 'Coming Soon', cursive;
+    font-size: 22px;
+    color: rgb(241, 241, 241);
+}
+
+html, body { height: 100%; }
+

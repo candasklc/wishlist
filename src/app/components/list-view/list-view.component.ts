@@ -10,9 +10,19 @@ export class ListViewComponent implements OnInit {
   wishListOfDashi = ['first','second','third']
   wishListOfDjuli = ['first','second','third']
   
+  dashiInput = ''
+  djuliInput = ''
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submitDashi(){
+    this.wishListOfDashi.push(this.dashiInput)
+  }
+
+  submitDjuli(){
+    console.log('Djuli clicked');
   }
 }

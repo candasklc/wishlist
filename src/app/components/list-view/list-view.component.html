@@ -1,20 +1,26 @@
 <div class="container">
     <article class="list-containers list-container-one">
-        <mat-form-field appearance="fill">
-            <mat-label>Add...</mat-label>
-            <input id="input-one" matInput>
-        </mat-form-field>
-        <ul class="lists" *ngFor="let x of wishListOfDashi">
-            <li>{{x}}</li>
+        <div class="input-container">
+            <mat-form-field appearance="fill">
+                <mat-label></mat-label>
+                <input id="input-one" matInput [(ngModel)]="dashiInput">
+            </mat-form-field>
+            <button (click)='submitDashi()' mat-button>Add</button>
+        </div>
+        <ul class="lists">
+            <li *ngFor="let x of wishListOfDashi">{{x}}</li>
         </ul>
     </article>
     <article class="list-containers list-container-two">
-        <mat-form-field appearance="fill">
-            <mat-label>Add...</mat-label>
-            <input id="input-two" matInput>
-        </mat-form-field>
-        <ul class="lists" *ngFor="let x of wishListOfDjuli">
-            <li>{{x}}</li>
+        <div class="input-container">
+            <mat-form-field appearance="fill">
+                <mat-label></mat-label>
+                <input id="input-two" matInput>
+            </mat-form-field>
+            <button (click)='submitDjuli()' mat-button>Add</button>
+        </div>
+        <ul class="lists">
+            <li *ngFor="let x of wishListOfDjuli">{{x}}</li>
         </ul>
     </article>
 </div>

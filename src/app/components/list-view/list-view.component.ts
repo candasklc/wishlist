@@ -10,13 +10,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent implements OnInit {
-  dashiUrl = '../../assets/dashiWishlist.json';
+  dashiUrl = 'https://candasklc.github.io/lists/dashiList.json';
   djuliUrl = '../../assets/djuliWishlist.json';
 
   wishListOfDashi: Data[];
   wishListOfDjuli: Data[];
 
-  dashiInput = '';
+  dashiInput: Data;
   djuliInput = '';
 
   constructor(private dataProvider: DataProviderService) { }
@@ -27,6 +27,7 @@ export class ListViewComponent implements OnInit {
   }
 
   submitDashi(): void{
+    this.addItem(this.dashiInput);
     this.getDashiLists(this.dashiUrl);
   }
 
@@ -48,4 +49,10 @@ export class ListViewComponent implements OnInit {
     });
   }
 
+  addItem(item: Data): void {
+    // tslint:disable-next-line: no-shadowed-variable
+    this.dataProvider.addItem(item).subscribe(item => {
+      this.wishListOfDashi.push(item);
+    });
+  }
 }

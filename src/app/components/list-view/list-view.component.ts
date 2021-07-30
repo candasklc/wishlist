@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataProviderService } from 'src/app/services/data-provider.service';
 import { Data } from 'src/app/interfaces/data';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,46 +9,46 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent implements OnInit {
-  dashiUrl = 'https://candasklc.github.io/lists/dashiList.json';
-  djuliUrl = '../../assets/djuliWishlist.json';
+  dashiUrl = 'https://api.jsonbin.io/b/6103f5f52ccb97077c14f4b4/latest';
+  djuliUrl = 'https://api.jsonbin.io/b/6103fed7046287097ea37fb4/latest';
 
-  wishListOfDashi: Data[];
-  wishListOfDjuli: Data[];
+  wishListOfDashi = [];
+  wishListOfDjuli = [];
+  emptyList = [];
 
-  dashiInput: Data;
+  dashiInput = '';
   djuliInput = '';
+
 
   constructor(private dataProvider: DataProviderService) { }
 
   ngOnInit(): void {
     this.getDashiLists(this.dashiUrl);
-    this.getDjuliLists(this.djuliUrl);
+    // this.getDjuliLists(this.djuliUrl);
   }
 
-  submitDashi(): void{
-    this.addItem(this.dashiInput);
-    this.getDashiLists(this.dashiUrl);
-  }
-
-  submitDjuli(): void{
-    this.getDjuliLists(this.djuliUrl);
+  addItem(): void{
+    this.emptyList.push(this.dashiInput);
+    const lastList = this.wishListOfDashi.concat(this.emptyList);
+    this.saveDashi(lastList);
   }
 
   getDashiLists(url: string): void{
     this.dataProvider.getList(url)
-    .subscribe((data: Data[]) => {
+    .subscribe((data) => {
       this.wishListOfDashi = data;
     });
   }
 
   getDjuliLists(url: string): void{
     this.dataProvider.getList(url)
-    .subscribe((data: Data[]) => {
+    .subscribe((data) => {
       this.wishListOfDjuli = data;
     });
   }
 
-  addItem(item: Data): void {
+
+  saveDashi(item: any): void {
     // tslint:disable-next-line: no-shadowed-variable
     this.dataProvider.addItem(item).subscribe(item => {
       this.wishListOfDashi.push(item);

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Data } from '../interfaces/data';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable} from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'X-Master-Key': 'sEm47xATe7MJZcCc.xte733phiRcq'
   })
 };
 
@@ -14,15 +14,15 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class DataProviderService {
-  dashiUrl = 'https://candasklc.github.io/lists/dashiList.json';
+  dashiUrl = 'https://api.jsonbin.io/b/6103f5f52ccb97077c14f4b4';
 
   constructor(private http: HttpClient) { }
 
   getList(url: string): Observable<Data[]> {
-    return this.http.get<Data[]>(url);
+    return this.http.get<Data[]>(url, httpOptions);
   }
 
-  addItem(item: Data): Observable<Data> {
-    return this.http.post<Data>(this.dashiUrl, item, httpOptions);
+  addItem(item: any): Observable<Data> {
+    return this.http.put<Data>(this.dashiUrl, item, httpOptions);
   }
 }

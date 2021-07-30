@@ -5,10 +5,10 @@
                 <mat-label></mat-label>
                 <input id="input-one" matInput [(ngModel)]="dashiInput">
             </mat-form-field>
-            <button (click)='submitDashi()' mat-button>Add</button>
+            <button (click)='addItem()' mat-button>Add</button>
         </div>
         <ul class="lists">
-            <li *ngFor="let x of wishListOfDashi">{{x.item}}</li>
+            <li *ngFor="let x of wishListOfDashi">{{x}}</li>
         </ul>
     </article>
     <article class="list-containers list-container-two">
@@ -17,7 +17,7 @@
                 <mat-label></mat-label>
                 <input id="input-two" matInput>
             </mat-form-field>
-            <button (click)='submitDjuli()' mat-button>Add</button>
+            <button mat-button>Add</button>
         </div>
         <ul class="lists">
             <li *ngFor="let x of wishListOfDjuli">{{x.item}}</li>

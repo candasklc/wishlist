@@ -7,9 +7,11 @@
             </mat-form-field>
             <button (click)='addItem(wishListOfDashi, dashiInput, dashiPostUrl)' mat-button>Add</button>
         </div>
-        <ul class="lists">
-            <li *ngFor="let x of wishListOfDashi">{{x}}</li>
-        </ul>
+        <div class="lists">
+            <div class="item-container" *ngFor="let x of wishListOfDashi">
+                <h3 *ngIf="x.isStillWanted">⌾ {{x.item}}</h3>
+            </div>
+        </div>
     </article>
     <article class="list-containers list-container-two">
         <div class="input-container">
@@ -19,8 +21,10 @@
             </mat-form-field>
             <button (click)='addItem(wishListOfDjuli, djuliInput, djuliPostUrl)' mat-button>Add</button>
         </div>
-        <ul class="lists">
-            <li *ngFor="let x of wishListOfDjuli">{{x}}</li>
-        </ul>
+        <div class="lists">
+            <div class="item-container" *ngFor="let x of wishListOfDjuli">
+                <h3 *ngIf="x.isStillWanted">⌾ {{x.item}}</h3>
+            </div>
+        </div>
     </article>
 </div>

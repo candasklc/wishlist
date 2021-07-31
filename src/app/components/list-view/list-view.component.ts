@@ -1,5 +1,6 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Data } from '@angular/router';
 import { DataProviderService } from 'src/app/services/data-provider.service';
 
 
@@ -23,7 +24,6 @@ export class ListViewComponent implements OnInit {
   dashiInput = '';
   djuliInput = '';
 
-
   constructor(private dataProvider: DataProviderService) { }
 
   ngOnInit(): void {
@@ -35,7 +35,11 @@ export class ListViewComponent implements OnInit {
     if (!input.replace(/\s/g, '').length) {
       return alert(this.emptyListError);
     }else{
-      this.emptyList.push(input);
+      const inputToSend = {
+        item: input,
+        isStillWanted: true
+      };
+      this.emptyList.push(inputToSend);
       const lastList = list.concat(this.emptyList);
       this.saveLists(lastList, list, url);
     }

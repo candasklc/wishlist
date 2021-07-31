@@ -5,7 +5,7 @@
                 <mat-label></mat-label>
                 <input id="input-one" matInput [(ngModel)]="dashiInput">
             </mat-form-field>
-            <button (click)='addItem()' mat-button>Add</button>
+            <button (click)='addItem(wishListOfDashi, dashiInput, dashiPostUrl)' mat-button>Add</button>
         </div>
         <ul class="lists">
             <li *ngFor="let x of wishListOfDashi">{{x}}</li>
@@ -15,12 +15,12 @@
         <div class="input-container">
             <mat-form-field appearance="fill">
                 <mat-label></mat-label>
-                <input id="input-two" matInput>
+                <input id="input-two" matInput [(ngModel)]="djuliInput">
             </mat-form-field>
-            <button mat-button>Add</button>
+            <button (click)='addItem(wishListOfDjuli, djuliInput, djuliPostUrl)' mat-button>Add</button>
         </div>
         <ul class="lists">
-            <li *ngFor="let x of wishListOfDjuli">{{x.item}}</li>
+            <li *ngFor="let x of wishListOfDjuli">{{x}}</li>
         </ul>
     </article>
 </div>

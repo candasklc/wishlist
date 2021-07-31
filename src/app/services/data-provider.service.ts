@@ -14,7 +14,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class DataProviderService {
-  dashiUrl = 'https://api.jsonbin.io/b/6103f5f52ccb97077c14f4b4';
+  dashiPostUrl = 'https://api.jsonbin.io/b/6103f5f52ccb97077c14f4b4';
+  djuliUrl = 'https://api.jsonbin.io/b/6103fed7046287097ea37fb4';
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +23,7 @@ export class DataProviderService {
     return this.http.get<Data[]>(url, httpOptions);
   }
 
-  addItem(item: any): Observable<Data> {
-    return this.http.put<Data>(this.dashiUrl, item, httpOptions);
+  addItem(item: any, url: string): Observable<Data> {
+    return this.http.put<Data>(url, item, httpOptions);
   }
 }

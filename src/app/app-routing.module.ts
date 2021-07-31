@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListViewComponent } from './components/list-view/list-view.component';
 
 const routes: Routes = [
-  { path:'', component: ListViewComponent}
+  { path: '', component: ListViewComponent}
 ];
 
 @NgModule({

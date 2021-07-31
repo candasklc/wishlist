@@ -8,6 +8,10 @@
             <button (click)='addItem(wishListOfDashi, dashiInput, dashiPostUrl)' mat-button>Add</button>
         </div>
         <div class="lists">
+            <div class="edit-component">
+                <app-update-view [wishListOfDashi]='wishListOfDashi' *ngIf="isEditModeOn">
+                </app-update-view>
+            </div>
             <div class="item-container" *ngFor="let x of wishListOfDashi">
                 <h3 *ngIf="x.isStillWanted">⌾ {{x.item}}</h3>
             </div>
@@ -19,9 +23,13 @@
                 <mat-label></mat-label>
                 <input id="input-two" matInput [(ngModel)]="djuliInput">
             </mat-form-field>
-            <button (click)='addItem(wishListOfDjuli, djuliInput, djuliPostUrl)' mat-button>Add</button>
+            <button mat-button>Add</button>
         </div>
-        <div class="lists">
+        <div class="lists">    
+            <div class="edit-component">
+                <app-update-view [wishListOfDjuli]='wishListOfDjuli' *ngIf="isEditModeOn">
+                </app-update-view>
+            </div>
             <div class="item-container" *ngFor="let x of wishListOfDjuli">
                 <h3 *ngIf="x.isStillWanted">⌾ {{x.item}}</h3>
             </div>

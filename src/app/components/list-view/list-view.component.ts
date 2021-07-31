@@ -1,6 +1,5 @@
-import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
-import { Data } from '@angular/router';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Data, RouterLink } from '@angular/router';
 import { DataProviderService } from 'src/app/services/data-provider.service';
 
 
@@ -16,13 +15,15 @@ export class ListViewComponent implements OnInit {
   djuliPostUrl = 'https://api.jsonbin.io/b/6103fed7046287097ea37fb4';
   djuliUrl = 'https://api.jsonbin.io/b/6103fed7046287097ea37fb4/latest';
 
-  wishListOfDashi = [];
-  wishListOfDjuli = [];
+  wishListOfDashi: Data[] = [];
+  wishListOfDjuli: Data[] = [];
   emptyList = [];
   emptyListError = 'Please do not send empty list item.';
 
   dashiInput = '';
   djuliInput = '';
+
+  isEditModeOn = false;
 
   constructor(private dataProvider: DataProviderService) { }
 
@@ -32,6 +33,7 @@ export class ListViewComponent implements OnInit {
   }
 
   addItem(list: any, input: string, url: string): void{
+    this.isEditModeOn = true;
     if (!input.replace(/\s/g, '').length) {
       return alert(this.emptyListError);
     }else{
@@ -58,7 +60,6 @@ export class ListViewComponent implements OnInit {
       this.wishListOfDjuli = data;
     });
   }
-
 
   saveLists(item: any, list: any, url: string): void {
     // tslint:disable-next-line: no-shadowed-variable

@@ -14,8 +14,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class DataProviderService {
-  dashiPostUrl = 'https://api.jsonbin.io/b/6103f5f52ccb97077c14f4b4';
-  djuliUrl = 'https://api.jsonbin.io/b/6103fed7046287097ea37fb4';
 
   constructor(private http: HttpClient) { }
 

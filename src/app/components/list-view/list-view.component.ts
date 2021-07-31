@@ -18,6 +18,7 @@ export class ListViewComponent implements OnInit {
   wishListOfDashi = [];
   wishListOfDjuli = [];
   emptyList = [];
+  emptyListError = 'Please do not send empty list item.';
 
   dashiInput = '';
   djuliInput = '';
@@ -31,9 +32,13 @@ export class ListViewComponent implements OnInit {
   }
 
   addItem(list: any, input: string, url: string): void{
-    this.emptyList.push(input);
-    const lastList = list.concat(this.emptyList);
-    this.saveLists(lastList, list, url);
+    if (!input.replace(/\s/g, '').length) {
+      return alert(this.emptyListError);
+    }else{
+      this.emptyList.push(input);
+      const lastList = list.concat(this.emptyList);
+      this.saveLists(lastList, list, url);
+    }
   }
 
   getDashiLists(url: string): void{

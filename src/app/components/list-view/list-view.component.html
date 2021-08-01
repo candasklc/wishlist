@@ -1,38 +1,80 @@
-<div class="container">
+<div class="wrapper">
+  <div class="container">
+    <!-- ============================ Dashi Part ================================= -->
     <article class="list-containers list-container-one">
-        <div class="input-container">
-            <mat-form-field appearance="fill">
-                <mat-label></mat-label>
-                <input id="input-one" matInput [(ngModel)]="dashiInput">
-            </mat-form-field>
-            <button (click)='addItem(wishListOfDashi, dashiInput, dashiPostUrl)' mat-button>Add</button>
+      <div class="input-container">
+        <mat-form-field appearance="fill" *ngIf="isEditModeOnDashi">
+          <input id="input-one" matInput [(ngModel)]="dashiInput" />
+        </mat-form-field>
+      </div>
+      <div class="edit-component" *ngIf="isEditModeOnDashi">
+        <app-update-view [wishListOfDashi]="wishListOfDashi"> </app-update-view>
+      </div>
+      <div class="lists" *ngIf="isEditModeOnDashi == false">
+        <div class="item-container" *ngFor="let x of wishListOfDashi">
+          <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
         </div>
-        <div class="lists">
-            <div class="edit-component">
-                <app-update-view [wishListOfDashi]='wishListOfDashi' *ngIf="isEditModeOn">
-                </app-update-view>
-            </div>
-            <div class="item-container" *ngFor="let x of wishListOfDashi">
-                <h3 *ngIf="x.isStillWanted">⌾ {{x.item}}</h3>
-            </div>
-        </div>
+      </div>
+      <button
+        *ngIf="isEditModeOnDashi == false"
+        (click)="isEditModeOnDashi = !isEditModeOnDashi"
+        mat-button
+      >
+        Update
+      </button>
+      <button
+        (click)="isEditModeOnDashi = !isEditModeOnDashi"
+        class="saveBtn"
+        mat-button
+        *ngIf="isEditModeOnDashi"
+      >
+        Cancel
+      </button>
+      <button class="saveBtn" mat-button *ngIf="isEditModeOnDashi">
+        Save and Close
+      </button>
     </article>
+
+    <!-- ========================= End of Dashi Part ================================= -->
+
+    <!-- ============================ Djuli Part ================================= -->
+
     <article class="list-containers list-container-two">
-        <div class="input-container">
-            <mat-form-field appearance="fill">
-                <mat-label></mat-label>
-                <input id="input-two" matInput [(ngModel)]="djuliInput">
-            </mat-form-field>
-            <button mat-button>Add</button>
+      <div class="input-container" *ngIf="isEditModeOnDjuli">
+        <mat-form-field appearance="fill">
+          <input id="input-two" matInput [(ngModel)]="djuliInput" />
+        </mat-form-field>
+      </div>
+      <div class="edit-component" *ngIf="isEditModeOnDjuli">
+        <app-update-view-djuli
+          [wishListOfDjuli]="wishListOfDjuli"
+        ></app-update-view-djuli>
+      </div>
+      <div class="lists" *ngIf="isEditModeOnDjuli == false">
+        <div class="item-container" *ngFor="let x of wishListOfDjuli">
+          <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
         </div>
-        <div class="lists">    
-            <div class="edit-component">
-                <app-update-view [wishListOfDjuli]='wishListOfDjuli' *ngIf="isEditModeOn">
-                </app-update-view>
-            </div>
-            <div class="item-container" *ngFor="let x of wishListOfDjuli">
-                <h3 *ngIf="x.isStillWanted">⌾ {{x.item}}</h3>
-            </div>
-        </div>
+      </div>
+      <button
+        *ngIf="isEditModeOnDjuli == false"
+        (click)="isEditModeOnDjuli = !isEditModeOnDjuli"
+        mat-button
+      >
+        Update
+      </button>
+      <button
+        (click)="isEditModeOnDjuli = !isEditModeOnDjuli"
+        class="saveBtn"
+        mat-button
+        *ngIf="isEditModeOnDjuli"
+      >
+        Cancel
+      </button>
+      <button class="saveBtn" mat-button *ngIf="isEditModeOnDjuli">
+        Save and Close
+      </button>
     </article>
+
+    <!-- ========================= End of Djuli Part ================================ -->
+  </div>
 </div>

@@ -23,28 +23,14 @@ export class ListViewComponent implements OnInit {
   dashiInput = '';
   djuliInput = '';
 
-  isEditModeOn = false;
+  isEditModeOnDashi = false;
+  isEditModeOnDjuli = false;
 
   constructor(private dataProvider: DataProviderService) { }
 
   ngOnInit(): void {
     this.getDashiLists(this.dashiUrl);
     this.getDjuliLists(this.djuliUrl);
-  }
-
-  addItem(list: any, input: string, url: string): void{
-    this.isEditModeOn = true;
-    if (!input.replace(/\s/g, '').length) {
-      return alert(this.emptyListError);
-    }else{
-      const inputToSend = {
-        item: input,
-        isStillWanted: true
-      };
-      this.emptyList.push(inputToSend);
-      const lastList = list.concat(this.emptyList);
-      this.saveLists(lastList, list, url);
-    }
   }
 
   getDashiLists(url: string): void{
@@ -61,10 +47,29 @@ export class ListViewComponent implements OnInit {
     });
   }
 
-  saveLists(item: any, list: any, url: string): void {
+  cancel(editMode: boolean): void{
+    editMode = !editMode;
+  }
+
+  saveAndClose(input: string, list: any, url: string, editMode: boolean): void{
+    if (!input.replace(/\s/g, '').length) {
+      return alert(this.emptyListError);
+    }else{
+      const inputToSend = {
+        item: input,
+        isStillWanted: true
+      };
+      this.emptyList.push(inputToSend);
+      const lastList = list.concat(this.emptyList);
+      this.postLists(lastList, list, url);
+      editMode = !editMode;
+    }
+  }
+  postLists(item: any, list: any, url: string): void {
     // tslint:disable-next-line: no-shadowed-variable
     this.dataProvider.addItem(item, url).subscribe(item => {
       list.push(item);
     });
   }
+
 }

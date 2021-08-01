@@ -8,13 +8,10 @@ import { Data } from '@angular/router';
 })
 export class UpdateViewComponent implements OnInit {
   @Input() wishListOfDashi: Data[] = [];
-  @Input() wishListOfDjuli: Data[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.wishListOfDashi);
-    console.log(this.wishListOfDjuli);
   }
 
 }

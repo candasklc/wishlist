@@ -7,7 +7,7 @@ import { Data } from '@angular/router';
   styleUrls: ['./update-view.component.scss']
 })
 export class UpdateViewComponent implements OnInit {
-  @Input() wishListOfDashi: Data[] = [];
+  @Input() emptyList: Data[] = [];
 
   constructor() { }
 

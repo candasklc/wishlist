@@ -10,14 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateViewComponent } from './components/update-view/update-view.component';
-import { UpdateViewDjuliComponent } from './components/update-view-djuli/update-view-djuli.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListViewComponent,
     UpdateViewComponent,
-    UpdateViewDjuliComponent
   ],
   imports: [
     BrowserModule,

@@ -61,8 +61,8 @@ export class ListViewComponent implements OnInit {
       };
       this.emptyList.push(inputToSend);
       const lastList = list.concat(this.emptyList);
-      this.postLists(lastList, list, url);
       editMode = !editMode;
+      this.postLists(lastList, list, url);
     }
   }
   postLists(item: any, list: any, url: string): void {

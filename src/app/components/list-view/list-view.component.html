@@ -5,7 +5,7 @@
       <mat-form-field appearance="fill" >
         <input id="input-one" matInput [(ngModel)]="dashiInput"/>
       </mat-form-field>
-      <button mat-button>Add</button>
+      <button (click)='addToEmptyList(dashiInput)' mat-button>Add</button>
     </div>
     <button
     *ngIf="isEditModeOnDashi == false"
@@ -17,32 +17,35 @@
     <div class="edit-component" *ngIf="isEditModeOnDashi">
       <app-update-view [emptyList]="emptyList"> </app-update-view>
     </div>
-    <div class="lists">
-      <div class="item-container" *ngFor="let x of wishListOfDashi">
-        <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
-      </div>
-    </div>
     <button
       (click)="isEditModeOnDashi = !isEditModeOnDashi"
       class="saveBtn"
       mat-button
       *ngIf="isEditModeOnDashi"
     >
-      Cancel
+      Close
     </button>
     <button
-      (click)="saveAndClose(
-        dashiInput,
+      (click)="save(
         wishListOfDashi,
         dashiPostUrl,
         isEditModeOnDashi
-      )"
+      );
+      isEditModeOnDashi = !isEditModeOnDashi"
       class="saveBtn"
       mat-button
       *ngIf="isEditModeOnDashi"
     >
-      Save and Close
+      Save
     </button>
+    <div class="lists">
+      <hr>
+      <h2>Current List</h2>
+      <div class="item-container" *ngFor="let x of wishListOfDashi">
+        <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
+      </div>
+      <hr>
+    </div>
   </article>
 
   <!-- ========================= End of Dashi Part ================================= -->
@@ -54,11 +57,34 @@
       <mat-form-field appearance="fill">
         <input id="input-two" matInput [(ngModel)]="djuliInput" />
       </mat-form-field>
-      <button mat-button>Add</button>
+      <button (click)='addToEmptyList(djuliInput)' mat-button>Add</button>
     </div>
     <div class="edit-component" *ngIf="isEditModeOnDjuli">
       <app-update-view [emptyList]="emptyList"></app-update-view>
     </div>
+    <button
+      (click)="isEditModeOnDjuli = !isEditModeOnDjuli"
+      class="saveBtn"
+      mat-button
+      *ngIf="isEditModeOnDjuli"
+    >
+      Close
+    </button>
+    <button
+      (click)="
+        save(
+          wishListOfDjuli,
+          djuliPostUrl,
+          isEditModeOnDjuli
+        );
+        isEditModeOnDjuli = !isEditModeOnDjuli
+      "
+      class="saveBtn"
+      mat-button
+      *ngIf="isEditModeOnDjuli"
+    >
+      Save
+    </button>
     <button
       *ngIf="isEditModeOnDjuli == false"
       (click)="isEditModeOnDjuli = !isEditModeOnDjuli"
@@ -67,33 +93,13 @@
       Update
     </button>
     <div class="lists">
+      <hr>
+      <h2>Current List</h2>
       <div class="item-container" *ngFor="let x of wishListOfDjuli">
         <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
       </div>
+      <hr>
     </div>
-    <button
-      (click)="isEditModeOnDjuli = !isEditModeOnDjuli"
-      class="saveBtn"
-      mat-button
-      *ngIf="isEditModeOnDjuli"
-    >
-      Cancel
-    </button>
-    <button
-      (click)="
-        saveAndClose(
-          djuliInput,
-          wishListOfDjuli,
-          djuliPostUrl,
-          isEditModeOnDjuli
-        )
-      "
-      class="saveBtn"
-      mat-button
-      *ngIf="isEditModeOnDjuli"
-    >
-      Save and Close
-    </button>
   </article>
 
   <!-- ========================= End of Djuli Part ================================ -->

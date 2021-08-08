@@ -47,11 +47,7 @@ export class ListViewComponent implements OnInit {
     });
   }
 
-  cancel(editMode: boolean): void{
-    editMode = !editMode;
-  }
-
-  saveAndClose(input: string, list: any, url: string, editMode: boolean): void{
+  addToEmptyList(input: string): void {
     if (!input.replace(/\s/g, '').length) {
       return alert(this.emptyListError);
     }else{
@@ -60,11 +56,14 @@ export class ListViewComponent implements OnInit {
         isStillWanted: true
       };
       this.emptyList.push(inputToSend);
-      const lastList = list.concat(this.emptyList);
-      editMode = !editMode;
-      this.postLists(lastList, list, url);
     }
   }
+
+  save(list: any, url: string): void{
+    const lastList = list.concat(this.emptyList);
+    this.postLists(lastList, list, url);
+  }
+
   postLists(item: any, list: any, url: string): void {
     // tslint:disable-next-line: no-shadowed-variable
     this.dataProvider.addItem(item, url).subscribe(item => {
@@ -72,4 +71,7 @@ export class ListViewComponent implements OnInit {
     });
   }
 
+  cancel(editMode: boolean): void{
+    editMode = !editMode;
+  }
 }

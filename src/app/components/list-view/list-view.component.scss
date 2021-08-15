@@ -2,6 +2,17 @@
   margin: 0;
   padding: 0;
 }
+@media only screen and (max-width: 500px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .list-containers{
+      align-self: center;
+      max-width: 400px;
+    }
+  }
+}
 
 .container {
   display: flex;

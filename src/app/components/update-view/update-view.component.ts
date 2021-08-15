@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, EventEmitter } from '@angular/core';
-import { Data } from '@angular/router';
+import { DataInterface } from 'src/app/interfaces/data';
 import { DataProviderService } from 'src/app/services/data-provider.service';
 
 @Component({
@@ -8,17 +8,26 @@ import { DataProviderService } from 'src/app/services/data-provider.service';
   styleUrls: ['./update-view.component.scss']
 })
 export class UpdateViewComponent implements OnInit {
-  @Input() theWishList: Data[] = [];
+  @Input() theWishList: DataInterface[] = [];
   @Input() thePostUrl = '';
 
-
+  fakeList: DataInterface[] = [];
+  emptyList: DataInterface[] = [];
+  emptyItem: DataInterface = {
+    item: 'Your wishlist is waiting to be updated...',
+    isStillWanted: true,
+  };
   theListInput = '';
-
   emptyListError = 'Please do not send empty list item.';
 
   constructor(private dataProvider: DataProviderService) { }
 
   ngOnInit(): void {
+    this.cloneArray(this.theWishList);
+  }
+
+  cloneArray(list: DataInterface[]): void{
+    this.fakeList = [...list];
   }
 
 
@@ -26,30 +35,32 @@ export class UpdateViewComponent implements OnInit {
     if (!input.replace(/\s/g, '').length) {
       return alert(this.emptyListError);
     }else{
-      const inputToSend = {
+      const objectToSend = {
         item: input,
         isStillWanted: true
       };
-      this.theWishList.push(inputToSend);
+      this.theWishList.push(objectToSend);
     }
   }
 
-  save(list: any, url: string): void{
-    if (list === !this.theWishList) {
+  save(list: DataInterface[], url: string): void{
+    if (list.length === 0) {
+      list.push(this.emptyItem);
+    } else {
       this.postList(list, url);
     }
   }
 
 
-  deleteItem(item: Data): void{
+  deleteItem(item: DataInterface): void{
     const i = this.theWishList.indexOf(item);
     this.theWishList.splice(i, 1);
   }
 
-  postList(list: any, url: string): void {
+  postList(list: DataInterface[], url: string): void {
     // tslint:disable-next-line: no-shadowed-variable
     this.dataProvider.addItem(list, url).subscribe(item => {
-      list.push(item);
+      item = list;
     });
   }
 }

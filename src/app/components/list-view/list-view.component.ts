@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Data, RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Data } from '@angular/router';
 import { DataProviderService } from 'src/app/services/data-provider.service';
 
 

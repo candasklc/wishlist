@@ -1,4 +1,4 @@
-export interface Data {
+export interface DataInterface {
     item: string;
     isStillWanted: boolean;
 }

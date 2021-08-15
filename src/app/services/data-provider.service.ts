@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Data } from '../interfaces/data';
+import { DataInterface } from '../interfaces/data';
 import { Observable} from 'rxjs';
 
 const httpOptions = {
@@ -17,11 +17,11 @@ export class DataProviderService {
 
   constructor(private http: HttpClient) { }
 
-  getList(url: string): Observable<Data[]> {
-    return this.http.get<Data[]>(url, httpOptions);
+  getList(url: string): Observable<DataInterface[]> {
+    return this.http.get<DataInterface[]>(url, httpOptions);
   }
 
-  addItem(item: any, url: string): Observable<Data> {
-    return this.http.put<Data>(url, item, httpOptions);
+  addItem(list: DataInterface[], url: string): Observable<DataInterface[]> {
+    return this.http.put<DataInterface[]>(url, list, httpOptions);
   }
 }

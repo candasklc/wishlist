@@ -1,8 +1,8 @@
 <div class="container">
   <!-- ============================ Dashi Part ================================= -->
-  <article class="list-containers list-container-one">
+  <article class="list-containers list-container-one"  *ngIf="isUser">
     <button
-      *ngIf="isEditModeOnDashi == false"
+      *ngIf="isEditModeOnDashi == false && isDashi == true"
       (click)="isEditModeOnDashi = !isEditModeOnDashi"
       mat-button
     >
@@ -38,9 +38,10 @@
 
   <!-- ============================ Djuli Part ================================= -->
 
-  <article class="list-containers list-container-two">
+  <article class="list-containers list-container-two"  *ngIf="isUser">
     <button
-    *ngIf="isEditModeOnDjuli == false"
+    
+    *ngIf="isEditModeOnDjuli == false && isDjuli == true"
     (click)="isEditModeOnDjuli = !isEditModeOnDjuli"
     mat-button
   >
@@ -70,6 +71,15 @@
   
   <hr />
   </article>
-
   <!-- ========================= End of Djuli Part ================================ -->
+  <div class="pass-check-container" *ngIf="isUser == false">
+    <div class="pass-check-input-container">
+      <h4>Enter your password.</h4>
+      <mat-form-field appearance="fill">
+        <input id="input-one" matInput [(ngModel)]="password" />
+      </mat-form-field>
+      <button (click)="passwordCheck(password)" mat-button>Submit</button>
+    </div>
+  </div>
 </div>
+

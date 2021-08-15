@@ -19,14 +19,35 @@ export class ListViewComponent implements OnInit {
   wishListOfDashi: Data[] = [];
   wishListOfDjuli: Data[] = [];
 
+  isUser = false;
+  isDjuli = false;
+  isDashi = false;
   isEditModeOnDashi = false;
   isEditModeOnDjuli = false;
+  djuliPassword = 'asd';
+  dashiPassword = '123';
+  password = '';
+
 
   constructor(private dataProvider: DataProviderService) { }
 
   ngOnInit(): void {
+
     this.getDashiLists(this.dashiUrl);
     this.getDjuliLists(this.djuliUrl);
+  }
+
+  passwordCheck(password: string): void{
+    if (password === this.dashiPassword) {
+      this.isDashi = true;
+      this.isUser = true;
+    } else if (password === this.djuliPassword){
+      this.isDjuli = true;
+      this.isUser = true;
+    } else {
+      const errorMessage = 'Incorrect password.';
+      console.log(errorMessage);
+    }
   }
 
   getDashiLists(url: string): void{

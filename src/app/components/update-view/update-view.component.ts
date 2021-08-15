@@ -35,7 +35,15 @@ export class UpdateViewComponent implements OnInit {
   }
 
   save(list: any, url: string): void{
-    this.postList(list, url);
+    if (list === !this.theWishList) {
+      this.postList(list, url);
+    }
+  }
+
+
+  deleteItem(item: Data): void{
+    const i = this.theWishList.indexOf(item);
+    this.theWishList.splice(i, 1);
   }
 
   postList(list: any, url: string): void {
@@ -44,10 +52,4 @@ export class UpdateViewComponent implements OnInit {
       list.push(item);
     });
   }
-
-  deleteItem(item: Data): void{
-    const i = this.theWishList.indexOf(item);
-    this.theWishList.splice(i, 1);
-  }
-
 }

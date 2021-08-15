@@ -1,8 +1,16 @@
 <div class="container">
-    <h2>Make your list to add.</h2>
-    <hr>
-    <div *ngFor="let x of emptyList">
-        <h3>{{x.item}}</h3>
+  <div class="input-container">
+    <mat-form-field appearance="fill">
+      <input id="input-one" matInput [(ngModel)]="theListInput" />
+    </mat-form-field>
+    <button (click)="pushToTheList(theListInput)" mat-button>Add</button>
+  </div>
+  <hr />
+  <div class="list-container" *ngFor="let x of theWishList">
+    <div class="item-container">
+      <h3>{{ x.item }}</h3>
+      <h5>Delete</h5>
     </div>
-    <hr>
+  </div>
+  <button (click)="save(theWishList, thePostUrl)" mat-button>Save</button>
 </div>

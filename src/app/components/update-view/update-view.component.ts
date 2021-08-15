@@ -14,7 +14,6 @@ export class UpdateViewComponent implements OnInit {
 
   theListInput = '';
 
-  emptyList = [];
   emptyListError = 'Please do not send empty list item.';
 
   constructor(private dataProvider: DataProviderService) { }
@@ -36,19 +35,19 @@ export class UpdateViewComponent implements OnInit {
   }
 
   save(list: any, url: string): void{
-    const lastList = list.concat(this.emptyList);
-    this.postList(lastList, list, url);
+    this.postList(list, url);
   }
 
-  postList(item: any, list: any, url: string): void {
+  postList(list: any, url: string): void {
     // tslint:disable-next-line: no-shadowed-variable
-    this.dataProvider.addItem(item, url).subscribe(item => {
+    this.dataProvider.addItem(list, url).subscribe(item => {
       list.push(item);
     });
   }
 
-  deleteItem(item: object): void{
-    console.log(item);
+  deleteItem(item: Data): void{
+    const i = this.theWishList.indexOf(item);
+    this.theWishList.splice(i, 1);
   }
 
 }

@@ -9,7 +9,7 @@
   <div class="list-container" *ngFor="let x of theWishList">
     <div class="item-container">
       <h3>{{ x.item }}</h3>
-      <h5>Delete</h5>
+      <h5 (click)='deleteItem(x)'>Delete</h5>
     </div>
   </div>
   <button (click)="save(theWishList, thePostUrl)" mat-button>Save</button>

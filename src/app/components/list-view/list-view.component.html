@@ -1,85 +1,79 @@
 <div class="container">
-  <!-- ============================ Dashi Part ================================= -->
-  <article class="list-containers list-container-one"  *ngIf="isUser">
-    <button
-      *ngIf="isEditModeOnDashi == false && isDashi == true"
-      (click)="isEditModeOnDashi = !isEditModeOnDashi"
-      mat-button
-    >
-      Update
-    </button>
-
-    <div class="edit-component" *ngIf="isEditModeOnDashi">
-      <app-update-view [theWishList]="wishListOfDashi" [thePostUrl]='dashiPostUrl'> </app-update-view>
-    </div>
-
-    <div class="lists" *ngIf="isEditModeOnDashi == false">
-      <hr />
-      <h2>Current List</h2>
-      <div class="item-container" *ngFor="let x of wishListOfDashi">
-        <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
-      </div>
-    </div>
-    
-    <button
-      (click)="isEditModeOnDashi = !isEditModeOnDashi"
-      class="saveBtn"
-      mat-button
-      *ngIf="isEditModeOnDashi"
-    >
-      Close
-    </button>
-    
-    <hr />
-  
-  </article>
-
-  <!-- ========================= End of Dashi Part ================================= -->
-
-  <!-- ============================ Djuli Part ================================= -->
-
-  <article class="list-containers list-container-two"  *ngIf="isUser">
-    <button
-    
-    *ngIf="isEditModeOnDjuli == false && isDjuli == true"
-    (click)="isEditModeOnDjuli = !isEditModeOnDjuli"
-    mat-button
-  >
-    Update
-  </button>
-
-  <div class="edit-component" *ngIf="isEditModeOnDjuli">
-    <app-update-view [theWishList]="wishListOfDjuli" [thePostUrl]='djuliPostUrl'> </app-update-view>
-  </div>
-
-  <div class="lists" *ngIf="isEditModeOnDjuli == false">
-    <hr />
-    <h2>Current List</h2>
-    <div class="item-container" *ngFor="let x of wishListOfDjuli">
-      <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
-    </div>
-  </div>
-  
-  <button
-    (click)="isEditModeOnDjuli = !isEditModeOnDjuli"
-    class="saveBtn"
-    mat-button
-    *ngIf="isEditModeOnDjuli"
-  >
-    Close
-  </button>
-  
-  <hr />
-  </article>
-  <!-- ========================= End of Djuli Part ================================ -->
-  <div class="pass-check-container" *ngIf="isUser == false">
+  <div class="pass-check-container" *ngIf="isUser">
     <div class="pass-check-input-container">
-      <h4>Enter your password.</h4>
+      <h4 [textContent]=message></h4>
       <mat-form-field appearance="fill">
         <input id="input-one" matInput [(ngModel)]="password" />
       </mat-form-field>
       <button (click)="passwordCheck(password)" mat-button>Submit</button>
+      <button (click)="isUser = false" mat-button>Cancel</button>
     </div>
   </div>
-</div>
 
+    <div class="list-wrapper">
+      <!-- ============================ Dashi Part ================================= -->
+      <button class="updateBtn" mat-button (click)="updateBtn()">Update</button>
+      <article class="list-containers list-container-one">
+        <div class="edit-component" *ngIf="isEditModeOnDashi && isDashi">
+          <app-update-view
+            [theWishList]="wishListOfDashi"
+            [thePostUrl]="dashiPostUrl"
+          >
+          </app-update-view>
+        </div>
+
+        <div class="lists" *ngIf="isEditModeOnDashi == false">
+          <hr />
+          <h2>Current List</h2>
+          <div class="item-container" *ngFor="let x of wishListOfDashi">
+            <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
+          </div>
+        </div>
+
+        <button
+          (click)="isEditModeOnDashi = !isEditModeOnDashi"
+          class="saveBtn"
+          mat-button
+          *ngIf="isEditModeOnDashi"
+        >
+          Close
+        </button>
+
+        <hr />
+      </article>
+
+      <!-- ========================= End of Dashi Part ================================= -->
+
+      <!-- ============================ Djuli Part ================================= -->
+
+      <article class="list-containers list-container-two">
+        <div class="edit-component" *ngIf="isEditModeOnDjuli && isDjuli">
+          <app-update-view
+            [theWishList]="wishListOfDjuli"
+            [thePostUrl]="djuliPostUrl"
+          >
+          </app-update-view>
+        </div>
+
+        <div class="lists" *ngIf="isEditModeOnDjuli == false">
+          <hr />
+          <h2>Current List</h2>
+          <div class="item-container" *ngFor="let x of wishListOfDjuli">
+            <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
+          </div>
+        </div>
+
+        <button
+          (click)="isEditModeOnDjuli = !isEditModeOnDjuli"
+          class="saveBtn"
+          mat-button
+          *ngIf="isEditModeOnDjuli"
+        >
+          Close
+        </button>
+
+        <hr />
+      </article>
+    </div>
+    <!-- ========================= End of Djuli Part ================================ -->
+</div>

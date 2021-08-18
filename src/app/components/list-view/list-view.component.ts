@@ -20,13 +20,14 @@ export class ListViewComponent implements OnInit {
   wishListOfDjuli: Data[] = [];
 
   isUser = false;
-  isDjuli = false;
   isDashi = false;
+  isDjuli = false;
   isEditModeOnDashi = false;
   isEditModeOnDjuli = false;
   djuliPassword = 'asd';
   dashiPassword = '123';
   password = '';
+  message = 'Password?';
 
 
   constructor(private dataProvider: DataProviderService) { }
@@ -37,34 +38,43 @@ export class ListViewComponent implements OnInit {
     this.getDjuliLists(this.djuliUrl);
   }
 
-  passwordCheck(password: string): void{
-    if (password === this.dashiPassword) {
-      this.isDashi = true;
+  updateBtn(): void{
+    if (this.isUser === false) {
       this.isUser = true;
-    } else if (password === this.djuliPassword){
-      this.isDjuli = true;
-      this.isUser = true;
-    } else {
-      const errorMessage = 'Incorrect password.';
-      console.log(errorMessage);
     }
   }
 
-  getDashiLists(url: string): void{
-    this.dataProvider.getList(url)
-    .subscribe((data) => {
-      this.wishListOfDashi = data;
-    });
+  passwordCheck(password: string): void {
+    console.log(password);
+    if (password === this.dashiPassword) {
+      this.isEditModeOnDashi = true;
+      this.isDashi = true;
+      this.isUser = false;
+    } else if (password === this.djuliPassword) {
+      this.isEditModeOnDjuli = true;
+      this.isDjuli = true;
+      this.isUser = false;
+    } else {
+      this.message = 'Incorrect password.';
+    }
+    this.password = '';
   }
 
-  getDjuliLists(url: string): void{
+  getDashiLists(url: string): void {
     this.dataProvider.getList(url)
-    .subscribe((data) => {
-      this.wishListOfDjuli = data;
-    });
+      .subscribe((data) => {
+        this.wishListOfDashi = data;
+      });
   }
 
-  cancel(editMode: boolean): void{
+  getDjuliLists(url: string): void {
+    this.dataProvider.getList(url)
+      .subscribe((data) => {
+        this.wishListOfDjuli = data;
+      });
+  }
+
+  cancel(editMode: boolean): void {
     editMode = !editMode;
   }
 }

@@ -3,68 +3,95 @@
   padding: 0;
 }
 @media only screen and (max-width: 500px) {
-  .container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    .list-containers{
-      align-self: center;
-      max-width: 400px;
+  .container {
+    .list-wrapper{
+      display: flex;
+      flex-direction: column;
+      .list-containers {
+        align-self: center;
+        max-width: 400px;
+      }
     }
   }
 }
 
 .container {
-  display: flex;
-  .list-containers {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100vh;
-    padding: 25px;
-    .lists {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      height: 100%;
-      width: 100%;
-      .item-container {
-        width: 100%;
-        max-height: 50px;
-        display: flex;
-        align-items: center;
-      }
-    }
-    button {
-      margin: 3px;
-      border: white solid 1px;
-      justify-self: end;
-    }
-  }
-
-  .list-container-one {
-    background-image: linear-gradient(rgba(53, 81, 104, 0.5),rgba(53, 81, 104, 0.5));
-  }
-  .list-container-two {
-    background-image: linear-gradient(rgba(144, 58, 126, 0.5),rgba(144, 58, 126, 0.5));
-  }
+  display: grid;
   .pass-check-container{
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.87);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .pass-check-input-container{
-      padding: 15px;
+    z-index: 1;
+    display: grid;
+    position: fixed;
+    justify-self: center;
+    top: 30px;
+    min-width: 250px;
+    min-height: 200px;
+    background-color: rgba(0, 0, 0, 0.63);
+    box-shadow: 0px 0px 10px 2px #2f2f2f;
+    .pass-check-input-container {
+      width: 100%;
+      padding: 10px;
       border-radius: 5px;
-      width: 300px;
-      height: 200px;
-      background-color: rgb(44, 44, 44);
+      align-self: center;
+      justify-self: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-content: space-between;
+    }
+  }
+
+  .list-wrapper {
+    display: flex;
+    .updateBtn{
+      position: fixed;
+      margin: 2px;
+      width: 100%;
+    }
+    .list-containers {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 100vh;
+      padding: 25px;
+      .lists {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+        width: 100%;
+        .item-container {
+          width: 100%;
+          max-height: 50px;
+          display: flex;
+          align-items: center;
+        }
+      }
+      button {
+        margin: 3px;
+        border: white solid 1px;
+        justify-self: end;
+      }
+    }
+
+    .list-container-one {
+      background-image: linear-gradient(
+        rgba(53, 81, 104, 0.5),
+        rgba(53, 81, 104, 0.5)
+      );
+    }
+    .list-container-two {
+      background-image: linear-gradient(
+        rgba(144, 58, 126, 0.5),
+        rgba(144, 58, 126, 0.5)
+      );
+    }
+    .pass-check-container {
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.87);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

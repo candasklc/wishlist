@@ -17,6 +17,10 @@
 
 .container {
   display: grid;
+  .button {
+    margin: 3px;
+    border: rgb(27, 27, 27) solid 1px;
+  }
   .pass-check-container{
     z-index: 1;
     display: grid;
@@ -25,7 +29,7 @@
     top: 30px;
     min-width: 250px;
     min-height: 200px;
-    background-color: rgba(0, 0, 0, 0.63);
+    background-color: rgb(243, 243, 243);
     box-shadow: 0px 0px 10px 2px #2f2f2f;
     .pass-check-input-container {
       width: 100%;
@@ -42,48 +46,54 @@
 
   .list-wrapper {
     display: flex;
+    justify-content: center;
     .updateBtn{
       position: fixed;
-      margin: 2px;
-      width: 100%;
+      width: 150px;
     }
     .list-containers {
+      padding: 50px 0 50px 0 ;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       width: 100%;
       min-height: 100vh;
-      padding: 25px;
+      h2{
+        text-align: center;
+      }
       .lists {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        box-shadow: 0px 0px 10px 2px #b9b9b9;
         height: 100%;
-        width: 100%;
+        min-width: 450px;
+        max-width: 500px;
+        padding: 15px;
+        border-radius: 5px;
         .item-container {
+          justify-self: flex-start;
           width: 100%;
-          max-height: 50px;
           display: flex;
           align-items: center;
+          box-shadow: 0px 0px 5px 1px #b9b9b9;
+          margin: 5px 0 0 0;
+          border-radius: 0 3px 0 3px;
+          .wish-container{
+            padding: 2px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            h3{
+              text-transform: capitalize;
+              margin: 0;
+            }
+            a{
+              text-decoration: underline;
+            }
+          }
         }
       }
-      button {
-        margin: 3px;
-        border: white solid 1px;
-        justify-self: end;
-      }
-    }
-
-    .list-container-one {
-      background-image: linear-gradient(
-        rgba(53, 81, 104, 0.5),
-        rgba(53, 81, 104, 0.5)
-      );
-    }
-    .list-container-two {
-      background-image: linear-gradient(
-        rgba(144, 58, 126, 0.5),
-        rgba(144, 58, 126, 0.5)
-      );
     }
     .pass-check-container {
       width: 100%;

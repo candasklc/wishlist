@@ -1,4 +1,5 @@
 export interface DataInterface {
-    item: string;
+    title: string;
+    link: string;
     isStillWanted: boolean;
 }

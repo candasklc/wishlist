@@ -1,18 +1,18 @@
 <div class="container">
   <div class="pass-check-container" *ngIf="isUser">
     <div class="pass-check-input-container">
-      <h4 [textContent]=message></h4>
       <mat-form-field appearance="fill">
+        <mat-label>Password?</mat-label>
         <input id="input-one" matInput [(ngModel)]="password" />
+        <mat-hint [textContent]="message"></mat-hint>
       </mat-form-field>
       <button (click)="passwordCheck(password)" mat-button>Submit</button>
       <button (click)="isUser = false" mat-button>Cancel</button>
     </div>
   </div>
-
     <div class="list-wrapper">
       <!-- ============================ Dashi Part ================================= -->
-      <button class="updateBtn" mat-button (click)="updateBtn()">Update</button>
+      <button class="updateBtn button" mat-button (click)="updateBtn()">Update</button>
       <article class="list-containers list-container-one">
         <div class="edit-component" *ngIf="isEditModeOnDashi && isDashi">
           <app-update-view
@@ -23,10 +23,13 @@
         </div>
 
         <div class="lists" *ngIf="isEditModeOnDashi == false">
-          <hr />
-          <h2>Current List</h2>
+          <h2>Dashi List</h2>
+          <hr>
           <div class="item-container" *ngFor="let x of wishListOfDashi">
-            <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
+            <div class='wish-container'>
+              <h3 *ngIf="x.isStillWanted">- {{ x.title }}</h3>
+              <a [href]="x.link" target="_blank">go</a>
+            </div>
           </div>
         </div>
 
@@ -38,8 +41,6 @@
         >
           Close
         </button>
-
-        <hr />
       </article>
 
       <!-- ========================= End of Dashi Part ================================= -->
@@ -56,10 +57,13 @@
         </div>
 
         <div class="lists" *ngIf="isEditModeOnDjuli == false">
-          <hr />
-          <h2>Current List</h2>
+          <h2>Djuli List</h2>
+          <hr>
           <div class="item-container" *ngFor="let x of wishListOfDjuli">
-            <h3 *ngIf="x.isStillWanted">⌾ {{ x.item }}</h3>
+            <div class='wish-container'>
+              <h3 *ngIf="x.isStillWanted">- {{ x.title }}</h3>
+              <a [routerLink]="x.link" target="_blank">go</a>
+            </div>
           </div>
         </div>
 
@@ -71,8 +75,6 @@
         >
           Close
         </button>
-
-        <hr />
       </article>
     </div>
     <!-- ========================= End of Djuli Part ================================ -->

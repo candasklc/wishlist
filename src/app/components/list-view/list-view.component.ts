@@ -27,7 +27,7 @@ export class ListViewComponent implements OnInit {
   djuliPassword = 'asd';
   dashiPassword = '123';
   password = '';
-  message = 'Password?';
+  message = '';
 
 
   constructor(private dataProvider: DataProviderService) { }
@@ -76,5 +76,6 @@ export class ListViewComponent implements OnInit {
 
   cancel(editMode: boolean): void {
     editMode = !editMode;
+    this.message = '';
   }
 }

@@ -1,14 +1,20 @@
 <div class="container">
   <div class="input-container">
     <mat-form-field appearance="fill">
-      <input id="input-one" matInput [(ngModel)]="theListInput" />
+      <input id="input-title" matInput [(ngModel)]="theTitleInput" />
     </mat-form-field>
-    <button (click)="pushToTheList(theListInput)" mat-button>Add</button>
+    <mat-form-field appearance="fill">
+      <input id="input-link" matInput [(ngModel)]="theLinkInput" />
+    </mat-form-field>
+    <button (click)="pushToTheList(theTitleInput, theLinkInput)" mat-button>Add</button>
   </div>
   <hr />
   <div class="list-container" *ngFor="let x of theWishList">
     <div class="item-container">
-      <h3>{{ x.item }}</h3>
+      <div>
+        <h3>{{ x.title }}</h3>
+        <a>{{ x.link }}</a>
+      </div>
       <h5 (click)='deleteItem(x)'>Delete</h5>
     </div>
   </div>

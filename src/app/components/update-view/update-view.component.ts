@@ -14,10 +14,12 @@ export class UpdateViewComponent implements OnInit {
   fakeList: DataInterface[] = [];
   emptyList: DataInterface[] = [];
   emptyItem: DataInterface = {
-    item: 'Your wishlist is waiting to be updated...',
+    title: 'Your wishlist is waiting to be updated...',
+    link: '',
     isStillWanted: true,
   };
-  theListInput = '';
+  theTitleInput = '';
+  theLinkInput = '';
   emptyListError = 'Please do not send empty list item.';
 
   constructor(private dataProvider: DataProviderService) { }
@@ -31,12 +33,13 @@ export class UpdateViewComponent implements OnInit {
   }
 
 
-  pushToTheList(input: string): void {
-    if (!input.replace(/\s/g, '').length) {
+  pushToTheList(titleInput: string, linkInput: string): void {
+    if (!titleInput.replace(/\s/g, '').length) {
       return alert(this.emptyListError);
     }else{
       const objectToSend = {
-        item: input,
+        title: titleInput,
+        link: linkInput,
         isStillWanted: true
       };
       this.theWishList.push(objectToSend);

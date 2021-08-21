@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Data } from '@angular/router';
 import { DataProviderService } from 'src/app/services/data-provider.service';
 
@@ -44,8 +44,13 @@ export class ListViewComponent implements OnInit {
     }
   }
 
+  keyDownFunction(event, password: string): void {
+    if (event.keyCode === 13) {
+      this.passwordCheck(password);
+    }
+  }
+
   passwordCheck(password: string): void {
-    console.log(password);
     if (password === this.dashiPassword) {
       this.isEditModeOnDashi = true;
       this.isDashi = true;
@@ -73,6 +78,10 @@ export class ListViewComponent implements OnInit {
         this.wishListOfDjuli = data;
       });
   }
+
+  goToLink(url: string): void{
+    window.open(url, '_blank');
+}
 
   cancel(editMode: boolean): void {
     editMode = !editMode;

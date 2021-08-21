@@ -2,14 +2,18 @@
   margin: 0;
   padding: 0;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 900px) {
   .container {
     .list-wrapper{
       display: flex;
       flex-direction: column;
       .list-containers {
+        display: flex;
         align-self: center;
-        max-width: 400px;
+        .lists{
+          width: 80%;
+          min-width: 400px;
+        }
       }
     }
   }
@@ -18,8 +22,10 @@
 .container {
   display: grid;
   .button {
+    align-self: center;
     margin: 3px;
     border: rgb(27, 27, 27) solid 1px;
+    width: 200px;
   }
   .pass-check-container{
     z-index: 1;
@@ -49,7 +55,9 @@
     justify-content: center;
     .updateBtn{
       position: fixed;
-      width: 150px;
+      margin: 3px;
+      border: rgb(27, 27, 27) solid 1px;
+      width: 200px;
     }
     .list-containers {
       padding: 50px 0 50px 0 ;
@@ -61,6 +69,16 @@
       min-height: 100vh;
       h2{
         text-align: center;
+      }
+      .edit-component{
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0px 0px 10px 2px #b9b9b9;
+        height: 100%;
+        min-width: 450px;
+        max-width: 500px;
+        padding: 15px;
+        border-radius: 5px;
       }
       .lists {
         display: flex;
@@ -76,20 +94,17 @@
           width: 100%;
           display: flex;
           align-items: center;
-          box-shadow: 0px 0px 5px 1px #b9b9b9;
+          box-shadow: 0px 1px 2px 1px #b9b9b9;
           margin: 5px 0 0 0;
           border-radius: 0 3px 0 3px;
           .wish-container{
-            padding: 2px;
+            padding: 0 4px 0 4px;
             display: flex;
             justify-content: space-between;
             width: 100%;
             h3{
               text-transform: capitalize;
               margin: 0;
-            }
-            a{
-              text-decoration: underline;
             }
           }
         }

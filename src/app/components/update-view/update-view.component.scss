@@ -1,10 +1,19 @@
 .container{
     display: flex;
     flex-direction: column;
+    .button{
+        margin: 3px;
+        border: rgb(27, 27, 27) solid 1px;
+        width: 200px;
+        align-self: center;
+    }
     .input-container{
         width: 100%;
         display: flex;
         flex-direction: column;
+        .import-field{
+            border: rgb(27, 27, 27) solid 1px;
+        }
     }
     .list-container{
         display: flex;

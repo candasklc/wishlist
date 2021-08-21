@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DataInterface } from 'src/app/interfaces/data';
 import { DataProviderService } from 'src/app/services/data-provider.service';
 
@@ -32,6 +32,11 @@ export class UpdateViewComponent implements OnInit {
     this.fakeList = [...list];
   }
 
+  keyDownFunction(event, titleInput: string, linkInput: string): void {
+    if (event.keyCode === 13) {
+      this.pushToTheList(titleInput, linkInput);
+    }
+  }
 
   pushToTheList(titleInput: string, linkInput: string): void {
     if (!titleInput.replace(/\s/g, '').length) {

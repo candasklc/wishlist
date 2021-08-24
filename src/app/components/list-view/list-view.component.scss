@@ -4,16 +4,15 @@
 }
 @media only screen and (max-width: 900px) {
   .container {
+    mat-card{
+      background-color: rgb(246, 246, 246);
+    }
     .list-wrapper{
       display: flex;
       flex-direction: column;
       .list-containers {
         display: flex;
         align-self: center;
-        .lists{
-          width: 80%;
-          min-width: 400px;
-        }
       }
     }
   }
@@ -21,6 +20,12 @@
 
 .container {
   display: grid;
+  .updateBtn{
+    margin: 10px 0 5px 0;
+    justify-self: center;
+    border: rgb(27, 27, 27) solid 1px;
+    width: 200px;
+  }
   .button {
     align-self: center;
     margin: 3px;
@@ -35,8 +40,6 @@
     top: 30px;
     min-width: 250px;
     min-height: 200px;
-    background-color: rgb(243, 243, 243);
-    box-shadow: 0px 0px 10px 2px #2f2f2f;
     .pass-check-input-container {
       width: 100%;
       padding: 10px;
@@ -52,51 +55,38 @@
 
   .list-wrapper {
     display: flex;
-    justify-content: center;
-    .updateBtn{
-      position: fixed;
-      margin: 3px;
-      border: rgb(27, 27, 27) solid 1px;
-      width: 200px;
-    }
+    justify-content: space-evenly;
+    padding: 0 0 50px 0 ;
     .list-containers {
-      padding: 50px 0 50px 0 ;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 100%;
       min-height: 100vh;
+      width: 100%;
       h2{
         text-align: center;
       }
       .edit-component{
         display: flex;
         flex-direction: column;
-        box-shadow: 0px 0px 10px 2px #b9b9b9;
         height: 100%;
-        min-width: 450px;
-        max-width: 500px;
-        padding: 15px;
         border-radius: 5px;
+        margin: 5px;
+        min-width: 300px;
       }
       .lists {
         display: flex;
         flex-direction: column;
-        box-shadow: 0px 0px 10px 2px #b9b9b9;
         height: 100%;
-        min-width: 450px;
-        max-width: 500px;
-        padding: 15px;
         border-radius: 5px;
+        margin: 5px;
+        min-width: 300px;
         .item-container {
           justify-self: flex-start;
-          width: 100%;
           display: flex;
           align-items: center;
-          box-shadow: 0px 1px 2px 1px #b9b9b9;
           margin: 5px 0 0 0;
-          border-radius: 0 3px 0 3px;
           .wish-container{
             padding: 0 4px 0 4px;
             display: flex;
@@ -109,14 +99,6 @@
           }
         }
       }
-    }
-    .pass-check-container {
-      width: 100%;
-      height: 100vh;
-      background-color: rgba(255, 255, 255, 0.87);
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
 }

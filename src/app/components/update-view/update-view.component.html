@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="input-container">
+  <mat-card class="input-container">
     <mat-form-field class="import-field" appearance="fill" (keydown)="keyDownFunction($event, theTitleInput, theLinkInput)">
       <mat-label>Title</mat-label>
       <input id="input-title" matInput [(ngModel)]="theTitleInput" />
@@ -9,17 +9,14 @@
       <input id="input-link" matInput [(ngModel)]="theLinkInput" />
     </mat-form-field>
     <button class="button" (click)="pushToTheList(theTitleInput, theLinkInput)" mat-button>Add</button>
-  </div>
-  <hr />
+  </mat-card>
   <h2>Current List</h2>
-  <div class="list-container" *ngFor="let x of theWishList">
-    <div class="item-container">
-      <div>
+  <mat-card class="item-container" *ngFor="let x of theWishList">
+      <div class="title-link">
         <h3>{{ x.title }}</h3>
         <a>{{ x.link }}</a>
       </div>
       <h5 (click)='deleteItem(x)'>Delete</h5>
-    </div>
-  </div>
+  </mat-card>
   <button class="button" (click)="save(theWishList, thePostUrl)" mat-button>Save</button>
 </div>

@@ -1,5 +1,4 @@
 <div class="container">
-  <button class="updateBtn" mat-button (click)="updateBtn()">Update</button>
   <mat-card class="pass-check-container" *ngIf="isUser">
     <div class="pass-check-input-container">
       <mat-form-field appearance="fill" (keydown)="keyDownFunction($event, password)">
@@ -11,11 +10,17 @@
       <button class="button" (click)="isUser = false" mat-button>Cancel</button>
     </div>
   </mat-card>
+
+  <div class="updateBtn-container">
+    <button class="updateBtn" mat-button (click)="updateBtn()">Update</button>
+  </div>
+
+  
   <div class="list-wrapper">
 
     <!-- ============================ Dashi Part ================================= -->
     
-    <article class="list-containers list-container-one">
+    <article class="list-containers">
         <mat-card class="edit-component" *ngIf="isEditModeOnDashi && isDashi">
           <app-update-view
             [theWishList]="wishListOfDashi"
@@ -32,11 +37,11 @@
           <h2>Dashi List</h2>
           <mat-card class="item-container" *ngFor="let x of wishListOfDashi">
             <div class='wish-container'>
-              <h3 *ngIf="x.isStillWanted">- {{ x.title }}</h3>
+            <h3>- {{ x.title }}</h3>
             </div>
-              <button (click)="goToLink(x.link)" mat-icon-button aria-label="Example icon button with a open in new tab icon">
-                <mat-icon>open_in_new</mat-icon>
-              </button>
+            <button (click)="goToLink(x.link)" mat-icon-button aria-label="Example icon button with a open in new tab icon">
+              <mat-icon>open_in_new</mat-icon>
+            </button>
           </mat-card>
         </mat-card>
       </article>
@@ -45,7 +50,7 @@
 
       <!-- ============================ Djuli Part ================================= -->
 
-      <article class="list-containers list-container-two">
+      <article class="list-containers">
         <mat-card class="edit-component" *ngIf="isEditModeOnDjuli && isDjuli">
           <app-update-view
             [theWishList]="wishListOfDjuli"
@@ -62,7 +67,7 @@
           <h2>Djuli List</h2>
           <mat-card class="item-container" *ngFor="let x of wishListOfDjuli">
             <div class='wish-container'>
-              <h3 *ngIf="x.isStillWanted">- {{ x.title }}</h3>
+              <h3>- {{ x.title }}</h3>
             </div>
               <button (click)="goToLink(x.link)" mat-icon-button aria-label="Example icon button with a open in new tab icon">
                 <mat-icon>open_in_new</mat-icon>

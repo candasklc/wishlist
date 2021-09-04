@@ -24,6 +24,7 @@ export class ListViewComponent implements OnInit {
   isDjuli = false;
   isEditModeOnDashi = false;
   isEditModeOnDjuli = false;
+  isItemWanted = true;
   djuliPassword = 'asd';
   dashiPassword = '123';
   password = '';

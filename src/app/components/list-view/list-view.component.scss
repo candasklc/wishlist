@@ -2,35 +2,24 @@
   margin: 0;
   padding: 0;
 }
+
 @media only screen and (max-width: 900px) {
-  .container {
-    mat-card{
-      background-color: rgb(246, 246, 246);
+  .container{
+    .updateBtn-container{
+      z-index: 1;
+      position: fixed;
     }
     .list-wrapper{
       display: flex;
       flex-direction: column;
-      .list-containers {
-        display: flex;
-        align-self: center;
-      }
+      padding: 4em 0 0 0;
     }
   }
 }
-
 .container {
   display: grid;
-  .updateBtn{
-    margin: 10px 0 5px 0;
-    justify-self: center;
-    border: rgb(27, 27, 27) solid 1px;
-    width: 200px;
-  }
-  .button {
-    align-self: center;
-    margin: 3px;
-    border: rgb(27, 27, 27) solid 1px;
-    width: 200px;
+  mat-card{
+    background-color: rgb(246, 246, 246);
   }
   .pass-check-container{
     z-index: 1;
@@ -52,11 +41,23 @@
       align-content: space-between;
     }
   }
+  .updateBtn-container{
+    display: grid;
+    background-color: white;
+    width: 100%;
+    z-index: 1;
+    .updateBtn{
+      justify-self: center;
+      width: 90%;
+      border: solid 1px rgb(29, 29, 29);
+      margin: .5em;
+    }
+  }
 
   .list-wrapper {
     display: flex;
-    justify-content: space-evenly;
-    padding: 0 0 50px 0 ;
+    width: 100%;
+    min-height: 100vh;
     .list-containers {
       display: flex;
       flex-direction: column;
@@ -71,24 +72,29 @@
         display: flex;
         flex-direction: column;
         height: 100%;
+        width: 90%;
         border-radius: 5px;
-        margin: 5px;
-        min-width: 300px;
+        .button {
+          align-self: center;
+          margin: 3px;
+          border: rgb(29, 29, 29) solid 1px;
+          width: 200px;
+        }
       }
       .lists {
+        margin: 0;
         display: flex;
         flex-direction: column;
+        width: 90%;
         height: 100%;
         border-radius: 5px;
-        margin: 5px;
-        min-width: 300px;
         .item-container {
-          justify-self: flex-start;
           display: flex;
           align-items: center;
-          margin: 5px 0 0 0;
+          align-self: flex-start;
+          width: 90%;
           .wish-container{
-            padding: 0 4px 0 4px;
+            padding: 0 .5em;
             display: flex;
             justify-content: space-between;
             width: 100%;

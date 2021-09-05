@@ -3,19 +3,6 @@
   padding: 0;
 }
 
-@media only screen and (max-width: 900px) {
-  .container{
-    .updateBtn-container{
-      z-index: 1;
-      position: fixed;
-    }
-    .list-wrapper{
-      display: flex;
-      flex-direction: column;
-      padding: 4em 0 0 0;
-    }
-  }
-}
 .container {
   display: grid;
   mat-card{
@@ -103,6 +90,26 @@
               margin: 0;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .container{
+    .updateBtn-container{
+      z-index: 1;
+      position: fixed;
+    }
+    .list-wrapper{
+      display: grid;
+      padding: 4em 0 0 0;
+      .list-containers{
+        justify-content: flex-start;
+        align-items: flex-start;
+        .lists{
+          height: 100%;
         }
       }
     }

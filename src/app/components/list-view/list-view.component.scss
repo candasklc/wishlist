@@ -100,12 +100,14 @@
 
 @media only screen and (max-width: 900px) {
   .container{
+    justify-content: center;
     .updateBtn-container{
       z-index: 1;
       position: fixed;
     }
     .list-wrapper{
-      display: grid;
+      display: flex;
+      flex-direction: column;
       padding: 4em 0 0 0;
       .list-containers{
         margin-top: 1em;

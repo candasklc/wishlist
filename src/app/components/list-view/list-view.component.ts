@@ -30,6 +30,8 @@ export class ListViewComponent implements OnInit {
   password = '';
   message = '';
 
+  reverseColumn: string;
+  flexEnd: string;
 
   constructor(private dataProvider: DataProviderService) { }
 
@@ -60,6 +62,8 @@ export class ListViewComponent implements OnInit {
       this.isEditModeOnDjuli = true;
       this.isDjuli = true;
       this.isUser = false;
+      this.reverseColumn = 'column-reverse';
+      this.flexEnd = 'flex-end';
     } else {
       this.message = 'Incorrect password.';
     }
@@ -81,8 +85,18 @@ export class ListViewComponent implements OnInit {
   }
 
   goToLink(url: string): void{
-    window.open(url, '_blank');
-}
+    window.open(this.checkUrls(url), '_blank');
+  }
+
+  checkUrls(url: string): string{
+    const start = 'https://';
+    if (url.startsWith(start)) {
+      return url;
+    } else {
+      const newUrl = start + url;
+      return newUrl;
+    }
+  }
 
   cancel(editMode: boolean): void {
     editMode = !editMode;

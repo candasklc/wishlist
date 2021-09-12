@@ -1,81 +1,97 @@
 <div class="container">
   <mat-card class="pass-check-container" *ngIf="isUser">
     <div class="pass-check-input-container">
-      <mat-form-field appearance="fill" (keydown)="keyDownFunction($event, password)">
+      <mat-form-field
+        appearance="fill"
+        (keydown)="keyDownFunction($event, password)"
+      >
         <mat-label>Password?</mat-label>
-        <input #inputOne matInput [(ngModel)]="password" appAutoFocus/>
+        <input #inputOne matInput [(ngModel)]="password" appAutoFocus />
         <mat-hint [textContent]="message"></mat-hint>
       </mat-form-field>
-      <button class="button" (click)="passwordCheck(password)" mat-button>Submit</button>
+      <button class="button" (click)="passwordCheck(password)" mat-button>
+        Submit
+      </button>
       <button class="button" (click)="isUser = false" mat-button>Cancel</button>
     </div>
   </mat-card>
 
-  <div class="updateBtn-container">
-    <button class="updateBtn" mat-button (click)="updateBtn()">Add Some Stuff</button>
+  <div class="updateBtn-container" mat-align-tabs="start">
+    <button class="updateBtn" mat-button (click)="updateBtn()">
+      Add Some Stuff
+    </button>
   </div>
 
-  
-  <div [style.flex-direction]="reverseColumn" [style.justify-content]="flexEnd" class="list-wrapper">
-
+  <mat-tab-group class="list-wrapper">
     <!-- ============================ Dashi Part ================================= -->
-    
-    <article class="list-containers">
-        <mat-card class="edit-component" *ngIf="isEditModeOnDashi && isDashi">
-          <app-update-view
-            [theWishList]="wishListOfDashi"
-            [thePostUrl]="dashiPostUrl"
-          >
-          </app-update-view>
-          <button
+
+    <mat-tab label="Dashi">
+      <mat-card class="edit-component" *ngIf="isEditModeOnDashi && isDashi">
+        <app-update-view
+          [theWishList]="wishListOfDashi"
+          [thePostUrl]="dashiPostUrl"
+        >
+        </app-update-view>
+        <button
           (click)="isEditModeOnDashi = !isEditModeOnDashi"
           class="button"
-          mat-button>Close</button>
-        </mat-card>
+          mat-button
+        >
+          Close
+        </button>
+      </mat-card>
 
-        <mat-card class="lists" *ngIf="isEditModeOnDashi == false">
-          <h2>Dashi List</h2>
-          <mat-card class="item-container" *ngFor="let x of wishListOfDashi">
-            <div class='wish-container'>
-            <h3>- {{ x.title }}</h3>
-            </div>
-            <button (click)="goToLink(x.link)" mat-icon-button aria-label="Example icon button with a open in new tab icon">
-              <mat-icon>open_in_new</mat-icon>
-            </button>
-          </mat-card>
-        </mat-card>
-      </article>
-
-      <!-- ========================= End of Dashi Part ================================= -->
-
-      <!-- ============================ Djuli Part ================================= -->
-
-      <article class="list-containers">
-        <mat-card class="edit-component" *ngIf="isEditModeOnDjuli && isDjuli">
-          <app-update-view
-            [theWishList]="wishListOfDjuli"
-            [thePostUrl]="djuliPostUrl"
-          >
-          </app-update-view>
+      <div class="lists" *ngIf="isEditModeOnDashi == false">
+        <mat-card class="item-container" *ngFor="let x of wishListOfDashi">
+          <h3>- {{ x.title }}</h3>
           <button
+            class="link-icons"
+            (click)="goToLink(x.link)"
+            mat-icon-button
+            aria-label="Example icon button with a open in new tab icon"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <!-- ========================= End of Dashi Part ================================= -->
+
+    <!-- ============================ Djuli Part ================================= -->
+
+    <mat-tab label="Djuli">
+      <mat-card class="edit-component" *ngIf="isEditModeOnDjuli && isDjuli">
+        <app-update-view
+          [theWishList]="wishListOfDjuli"
+          [thePostUrl]="djuliPostUrl"
+        >
+        </app-update-view>
+        <button
           (click)="isEditModeOnDjuli = !isEditModeOnDjuli"
           class="button"
-          mat-button>Close</button>
-        </mat-card>
+          mat-button
+        >
+          Close
+        </button>
+      </mat-card>
 
-        <mat-card class="lists" *ngIf="isEditModeOnDjuli == false">
-          <h2>Djuli List</h2>
-          <mat-card class="item-container" *ngFor="let x of wishListOfDjuli">
-            <div class='wish-container'>
-              <h3>- {{ x.title }}</h3>
-            </div>
-              <button (click)="goToLink(x.link)" mat-icon-button aria-label="Example icon button with a open in new tab icon">
-                <mat-icon>open_in_new</mat-icon>
-              </button>
-          </mat-card>
+      <div class="lists" *ngIf="isEditModeOnDjuli == false">
+        <mat-card class="item-container" *ngFor="let x of wishListOfDjuli">
+          <div class="wish-container">
+            <h3>- {{ x.title }}</h3>
+          </div>
+          <button
+            (click)="goToLink(x.link)"
+            mat-icon-button
+            aria-label="Example icon button with a open in new tab icon"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
         </mat-card>
-      </article>
-    </div>
-    
-    <!-- ========================= End of Djuli Part ================================ -->
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+  <!-- ========================= End of Djuli Part ================================ -->
 </div>

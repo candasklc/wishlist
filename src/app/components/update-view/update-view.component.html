@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-card class="input-container">
+  <div class="input-container">
     <mat-form-field class="import-field" appearance="fill" (keydown)="keyDownFunction($event, theTitleInput, theLinkInput)">
       <mat-label>Title</mat-label>
       <input id="input-title" matInput [(ngModel)]="theTitleInput" />
@@ -9,7 +9,7 @@
       <input id="input-link" matInput [(ngModel)]="theLinkInput" />
     </mat-form-field>
     <button class="button" (click)="pushToTheList(theTitleInput, theLinkInput)" mat-button>Add</button>
-  </mat-card>
+  </div>
   <h2>Current List</h2>
   <mat-card class="item-container" *ngFor="let x of theWishList">
       <div class="title-link">

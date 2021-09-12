@@ -6,12 +6,14 @@
 .container {
   min-height: 100vh;
   background-color: rgb(255, 255, 255);
-  display: grid;
-  mat-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  mat-card {
     background-color: rgb(246, 246, 246);
   }
-  .pass-check-container{
-    z-index: 1;
+  .pass-check-container {
+    z-index: 2;
     display: grid;
     position: fixed;
     justify-self: center;
@@ -30,67 +32,58 @@
       align-content: space-between;
     }
   }
-  .updateBtn-container{
-    display: grid;
+  .updateBtn-container {
+    display: flex;
+    justify-content: center;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
-    width: 100%;
+    width: 500px;
     max-height: 10vh;
     z-index: 1;
-    .updateBtn{
-      justify-self: center;
-      width: 90%;
+    .updateBtn {
+      width: 100%;
       border: solid 1px rgb(29, 29, 29);
-      margin: .5em;
+      margin: 0.5em;
     }
   }
 
   .list-wrapper {
     display: flex;
-    width: 100%;
+    align-self: center;
+    width: 500px;
     padding: 0 0 4em 0;
-    .list-containers {
+    .edit-component {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      width: 100%;
-      h2{
-        text-align: center;
+      height: 100%;
+      width: 90%;
+      border-radius: 5px;
+      .button {
+        margin: 3px;
+        border: rgb(29, 29, 29) solid 1px;
+        width: 200px;
       }
-      .edit-component{
+    }
+    .lists {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      height: 100%;
+      border-radius: 5px;
+      .item-container {
         display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 90%;
-        border-radius: 5px;
-        .button {
-          align-self: center;
-          margin: 3px;
-          border: rgb(29, 29, 29) solid 1px;
-          width: 200px;
-        }
-      }
-      .lists {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        height: 100%;
-        border-radius: 5px;
-        .item-container {
-          display: flex;
-          align-items: center;
-          align-self: flex-start;
-          width: 90%;
-          .wish-container{
-            padding: 0 .5em;
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            h3{
-              text-transform: capitalize;
-              margin: 0;
-            }
+        align-self: flex-start;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        margin: 0.5em 0 0 0;
+        .wish-container {
+          padding: 0 0.5em;
+          h3 {
+            text-transform: capitalize;
+            margin: 0;
+            padding: 0;
           }
         }
       }
@@ -99,19 +92,20 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .container{
-    justify-content: center;
-    .updateBtn-container{
+  .container {
+    .updateBtn-container {
       z-index: 1;
       position: fixed;
+      width: 100%;
     }
-    .list-wrapper{
+    .list-wrapper {
       display: flex;
       flex-direction: column;
       padding: 4em 0 0 0;
-      .list-containers{
+      width: 95%;
+      .list-containers {
         margin-top: 1em;
-        .lists{
+        .lists {
           height: 100%;
         }
       }

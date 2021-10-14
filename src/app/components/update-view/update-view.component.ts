@@ -13,13 +13,16 @@ export class UpdateViewComponent implements OnInit {
 
   fakeList: DataInterface[] = [];
   emptyList: DataInterface[] = [];
+  categories = ['clothes', 'electronic', 'other'];
   emptyItem: DataInterface = {
     title: 'Your wishlist is waiting to be updated...',
     link: '',
+    category: 'none',
     isStillWanted: true,
   };
   theTitleInput = '';
   theLinkInput = '';
+  theCategoryInput = '';
   emptyListError = 'Please do not send empty list item.';
 
   constructor(private dataProvider: DataProviderService) { }
@@ -32,19 +35,20 @@ export class UpdateViewComponent implements OnInit {
     this.fakeList = [...list];
   }
 
-  keyDownFunction(event, titleInput: string, linkInput: string): void {
+  keyDownFunction(event, titleInput: string, linkInput: string, categoryInput: string): void {
     if (event.keyCode === 13) {
-      this.pushToTheList(titleInput, linkInput);
+      this.pushToTheList(titleInput, linkInput, categoryInput);
     }
   }
 
-  pushToTheList(titleInput: string, linkInput: string): void {
-    if (!titleInput.replace(/\s/g, '').length) {
+  pushToTheList(titleInput: string, linkInput: string, categoryInput: string): void {
+    if (!titleInput.replace(/\s/g, '' ) || this.theCategoryInput === '') {
       return alert(this.emptyListError);
     }else{
       const objectToSend = {
         title: titleInput,
         link: linkInput,
+        category: categoryInput,
         isStillWanted: true
       };
       this.theWishList.push(objectToSend);

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="input-container">
-    <mat-form-field class="input-field" appearance="fill" (keydown)="keyDownFunction($event, theTitleInput, theLinkInput)">
+    <mat-form-field class="input-field" appearance="fill" (keydown)="keyDownFunction($event, theTitleInput, theLinkInput, theCategoryInput)">
       <mat-label>Title</mat-label>
       <input id="input-title" matInput [(ngModel)]="theTitleInput" />
     </mat-form-field>
@@ -8,12 +8,26 @@
       <mat-label>Link</mat-label>
       <input id="input-link" matInput [(ngModel)]="theLinkInput" />
     </mat-form-field>
-    <button class="button" (click)="pushToTheList(theTitleInput, theLinkInput)" mat-button>Add</button>
+    
+    
+    <h4>Please select a category:</h4>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="theCategoryInput">
+      <mat-radio-button class="example-radio-button" *ngFor="let x of categories" [value]="x">
+        {{ x }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    
+    <button class="button" (click)="pushToTheList(theTitleInput, theLinkInput, theCategoryInput)" mat-button>Add</button>
   </div>
   <h2>Current List</h2>
   <mat-card class="item-container" *ngFor="let x of theWishList">
       <div class="title-link">
         <h3>{{ x.title }}</h3>
+        <h4>{{ x.category }}</h4>
         <a>{{ x.link }}</a>
       </div>
       <h5 (click)='deleteItem(x)'>Delete</h5>

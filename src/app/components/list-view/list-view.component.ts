@@ -19,6 +19,9 @@ export class ListViewComponent implements OnInit {
   wishListOfDashi: Data[] = [];
   wishListOfDjuli: Data[] = [];
 
+  allDashiLists = [];
+  allDjuliLists = [];
+
   isUser = false;
   isDashi = false;
   isDjuli = false;
@@ -74,6 +77,10 @@ export class ListViewComponent implements OnInit {
     this.dataProvider.getList(url)
       .subscribe((data) => {
         this.wishListOfDashi = data;
+        const clothesList = this.wishListOfDashi.filter( x => x.category === 'clothes');
+        const electronicList = this.wishListOfDashi.filter( x => x.category === 'electronic');
+        const otherList = this.wishListOfDashi.filter( x => x.category === 'other');
+        this.allDashiLists = [clothesList, electronicList, otherList];
       });
   }
 
@@ -81,6 +88,10 @@ export class ListViewComponent implements OnInit {
     this.dataProvider.getList(url)
       .subscribe((data) => {
         this.wishListOfDjuli = data;
+        const clothesList = this.wishListOfDjuli.filter( x => x.category === 'clothes');
+        const electronicList = this.wishListOfDjuli.filter( x => x.category === 'electronic');
+        const otherList = this.wishListOfDjuli.filter( x => x.category === 'other');
+        this.allDjuliLists = [clothesList, electronicList, otherList];
       });
   }
 

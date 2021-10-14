@@ -10,7 +10,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
-import { MatTabsModule } from '@angular/material/tabs'; 
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatTreeModule } from '@angular/material/tree';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,6 +34,8 @@ import { AutoFocusDirective } from './directives/auto-focus.directive';
     MatCheckboxModule,
     MatButtonModule,
     MatCardModule,
+    MatRadioModule,
+    MatTreeModule,
     MatTabsModule,
     MatIconModule,
     MatDividerModule,

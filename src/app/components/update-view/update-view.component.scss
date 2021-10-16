@@ -24,6 +24,14 @@
             margin: 0 0 5px 0;
             border: rgb(27, 27, 27) solid 1px;
         }
+        .radio-group{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            .radio-button{
+                text-transform: capitalize;
+            }
+        }
     }
     h2{
         margin: 10px 0 0 0;

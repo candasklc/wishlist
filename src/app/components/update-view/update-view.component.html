@@ -10,12 +10,12 @@
     </mat-form-field>
     
     
-    <h4>Please select a category:</h4>
+    <h3>Please select a category:</h3>
+    
     <mat-radio-group
-      aria-labelledby="example-radio-group-label"
-      class="example-radio-group"
+      class="radio-group"
       [(ngModel)]="theCategoryInput">
-      <mat-radio-button class="example-radio-button" *ngFor="let x of categories" [value]="x">
+      <mat-radio-button class="radio-button" *ngFor="let x of categories" [value]="x">
         {{ x }}
       </mat-radio-button>
     </mat-radio-group>
@@ -26,8 +26,8 @@
   <h2>Current List</h2>
   <mat-card class="item-container" *ngFor="let x of theWishList">
       <div class="title-link">
-        <h3>{{ x.title }}</h3>
-        <h4>{{ x.category }}</h4>
+        <p style="text-transform: capitalize;">- {{ x.title }}</p>
+        <p style="text-transform: capitalize;">category: {{ x.category }}</p>
         <a>{{ x.link }}</a>
       </div>
       <h5 (click)='deleteItem(x)'>Delete</h5>

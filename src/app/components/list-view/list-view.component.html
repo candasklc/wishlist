@@ -34,46 +34,65 @@
       </app-update-view>
 
       <div class="lists" *ngIf="isEditModeOnDashi == false">
+        <button mat-button (click)="isClothesDashi = !isClothesDashi">
+          <h3>Clothes</h3>
+        </button>
 
-        <label for="dashiList0">Clothes</label>
-        <mat-card id="dashiList0" class="item-container" *ngFor="let x of allDashiLists[0]">
-          <h3>- {{ x.title }}</h3>
-          <button
-            class="link-icons"
-            (click)="goToLink(x.link)"
-            mat-icon-button
-            aria-label="Example icon button with a open in new tab icon"
+        <div *ngIf="isClothesDashi">
+          <mat-card
+            id="dashiList0"
+            class="item-container"
+            *ngFor="let x of allDashiLists[0]"
           >
-            <mat-icon>open_in_new</mat-icon>
-          </button>
-        </mat-card>
-        
-        <label for="dashiList1">Electronic</label>
-        <mat-card id="dashiList1" class="item-container" *ngFor="let x of allDashiLists[1]">
-          <h3>- {{ x.title }}</h3>
-          <button
-            class="link-icons"
-            (click)="goToLink(x.link)"
-            mat-icon-button
-            aria-label="Example icon button with a open in new tab icon"
-          >
-            <mat-icon>open_in_new</mat-icon>
-          </button>
-        </mat-card>   
+            <p style="text-transform: capitalize">- {{ x.title }}</p>
+            <button
+              class="link-icons"
+              (click)="goToLink(x.link)"
+              mat-icon-button
+              aria-label="Example icon button with a open in new tab icon"
+            >
+              <mat-icon>open_in_new</mat-icon>
+            </button>
+          </mat-card>
+        </div>
 
-        <label for="dashiList2">Other</label>
-        <mat-card id="dashiList2" class="item-container" *ngFor="let x of allDashiLists[2]">
-          <h3>- {{ x.title }}</h3>
-          <button
-            class="link-icons"
-            (click)="goToLink(x.link)"
-            mat-icon-button
-            aria-label="Example icon button with a open in new tab icon"
+        <button mat-button (click)="isElectronicDashi = !isElectronicDashi"><h3>Electronic</h3></button>
+        <div *ngIf="isElectronicDashi">
+          <mat-card
+            id="dashiList1"
+            class="item-container"
+            *ngFor="let x of allDashiLists[1]"
           >
-            <mat-icon>open_in_new</mat-icon>
-          </button>
-        </mat-card>   
+            <p style="text-transform: capitalize">- {{ x.title }}</p>
+            <button
+              class="link-icons"
+              (click)="goToLink(x.link)"
+              mat-icon-button
+              aria-label="Example icon button with a open in new tab icon"
+            >
+              <mat-icon>open_in_new</mat-icon>
+            </button>
+          </mat-card>
+        </div>
 
+        <button mat-button (click)="isOtherDashi = !isOtherDashi"><h3>Other</h3></button>
+        <div *ngIf="isOtherDashi">
+          <mat-card
+            id="dashiList2"
+            class="item-container"
+            *ngFor="let x of allDashiLists[2]"
+          >
+            <p style="text-transform: capitalize">- {{ x.title }}</p>
+            <button
+              class="link-icons"
+              (click)="goToLink(x.link)"
+              mat-icon-button
+              aria-label="Example icon button with a open in new tab icon"
+            >
+              <mat-icon>open_in_new</mat-icon>
+            </button>
+          </mat-card>
+        </div>
       </div>
     </mat-tab>
 
@@ -90,51 +109,71 @@
       </app-update-view>
 
       <div class="lists" *ngIf="isEditModeOnDjuli == false">
-
-        <label for="djuliList0">Clothes</label>
-        <mat-card id="djuliList0" class="item-container" *ngFor="let x of allDjuliLists[0]">
-          <h3>- {{ x.title }}</h3>
-          <button
-            class="link-icons"
-            (click)="goToLink(x.link)"
-            mat-icon-button
-            aria-label="Example icon button with a open in new tab icon"
+        <button mat-button (click)="isClothesDjuli = !isClothesDjuli"><h3>Clothes</h3></button>
+        <div *ngIf="isClothesDjuli">
+          <mat-card
+            id="djuliList0"
+            class="item-container"
+            *ngFor="let x of allDjuliLists[0]"
           >
-            <mat-icon>open_in_new</mat-icon>
-          </button>
-        </mat-card>
+            <p style="text-transform: capitalize">- {{ x.title }}</p>
+            <button
+              class="link-icons"
+              (click)="goToLink(x.link)"
+              mat-icon-button
+              aria-label="Example icon button with a open in new tab icon"
+            >
+              <mat-icon>open_in_new</mat-icon>
+            </button>
+          </mat-card>
+        </div>
 
-        <label for="djuliList1">Electronic</label>
-        <mat-card id="djuliList1" class="item-container" *ngFor="let x of allDjuliLists[1]">
-          <h3>- {{ x.title }}</h3>
-          <button
-            class="link-icons"
-            (click)="goToLink(x.link)"
-            mat-icon-button
-            aria-label="Example icon button with a open in new tab icon"
+        <button mat-button (click)="isElectronicDjuli = !isElectronicDjuli"><h3>Electronic</h3></button>
+        <div *ngIf="isElectronicDjuli">
+          <mat-card
+            id="djuliList1"
+            class="item-container"
+            *ngFor="let x of allDjuliLists[1]"
           >
-            <mat-icon>open_in_new</mat-icon>
-          </button>
-        </mat-card>   
-        <label for="djuliList2">Other</label>
-        <mat-card id="djuliList2" class="item-container" *ngFor="let x of allDjuliLists[2]">
-          <h3>- {{ x.title }}</h3>
-          <button
-            class="link-icons"
-            (click)="goToLink(x.link)"
-            mat-icon-button
-            aria-label="Example icon button with a open in new tab icon"
-          >
-            <mat-icon>open_in_new</mat-icon>
-          </button>
-        </mat-card>   
+            <p style="text-transform: capitalize">- {{ x.title }}</p>
+            <button
+              class="link-icons"
+              (click)="goToLink(x.link)"
+              mat-icon-button
+              aria-label="Example icon button with a open in new tab icon"
+            >
+              <mat-icon>open_in_new</mat-icon>
+            </button>
+          </mat-card>
+        </div>
 
+        <button mat-button (click)="isOtherDjuli = !isOtherDjuli"><h3>Other</h3></button>
+        <div *ngIf="isOtherDjuli">
+          <mat-card
+            id="djuliList2"
+            class="item-container"
+            *ngFor="let x of allDjuliLists[2]"
+          >
+            <h3>- {{ x.title }}</h3>
+            <button
+              class="link-icons"
+              (click)="goToLink(x.link)"
+              mat-icon-button
+              aria-label="Example icon button with a open in new tab icon"
+            >
+              <mat-icon>open_in_new</mat-icon>
+            </button>
+          </mat-card>
+        </div>
       </div>
     </mat-tab>
   </mat-tab-group>
   <button
     *ngIf="isEditModeOnDashi || isEditModeOnDjuli"
-    (click)="isEditModeOnDashi = !isEditModeOnDashi && isEditModeOnDjuli = !isEditModeOnDjuli"
+    (click)="
+      isEditModeOnDashi =
+        !isEditModeOnDashi && (isEditModeOnDjuli = !isEditModeOnDjuli)
+    "
     class="closeButton"
     mat-button
   >

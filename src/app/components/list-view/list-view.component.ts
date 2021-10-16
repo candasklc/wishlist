@@ -36,6 +36,14 @@ export class ListViewComponent implements OnInit {
   reverseColumn: string;
   flexEnd: string;
 
+  isClothesDashi = false;
+  isElectronicsDashi = false;
+  isOtherDashi = false;
+
+  isClothesDjuli = false;
+  isElectronicsDjuli = false;
+  isOtherDjuli = false;
+
   constructor(private dataProvider: DataProviderService) { }
 
   ngOnInit(): void {
